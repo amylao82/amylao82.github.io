@@ -1,0 +1,63 @@
+{% capture location %}{{ page.url | remove_first:'/' | split:'/' | first }}{% endcapture %}<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+		<title>{% if page.title %}{{ page.title }}{% else %}AmyLao{% endif %}</title>
+		
+		<link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+{% if page.blogfeed %}
+		<link rel="alternate" type="application/atom+xml" title="{{ site.name }} — Feed" href="{{ site.url }}/blog/feed.atom" />
+{% endif %}
+		<link rel="stylesheet" href="/css/main.css" />
+		<link rel="stylesheet" href="/css/syntax.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="wrapper{% if location == '' %} home{% endif %}">
+			<header>
+				<h1><a href="/">{{ site.name }}</a></h1>
+				<nav><ul>
+					<li><a {% if location == 'about' %}class="active" {% endif %}href="/about/">About</a></li>
+					<li><a {% if location == 'projects' %}class="active" {% endif %}href="/projects/">Projects</a></li>
+					<li><a {% if location == 'blog' %}class="active" {% endif %}href="/blog/">Blog</a></li>
+					<li><a {% if location == 'contact' %}class="active" {% endif %}href="/contact/">Contact</a></li>
+				</ul></nav>
+			</header>
+			<section>
+				{{ content }}
+			</section>
+			<footer>
+				<img class="avatar" src="/img/amy-logo.gif" alt="Me" />
+				<p><a href="/about/" rel="author">Amy</a> do nothing,<br>
+				but just type keyboard hard.</p>
+			<p>
+			<small>© {{ site.time | date: '%Y' }} Amy</small><br />
+			<small>Made with <a href="http://jekyllrb.com/">Jekyll</a> &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small>
+			</p>
+			</footer>
+		</div>
+		<script src="/js/scale.fix.js"></script>
+		<script type="text/javascript">
+		{% if site.enable_disqus %}
+			var disqus_shortname  = 'AmyLao',
+			    disqus_identifier = '{{ page.path | split:'/' | last | cgi_escape }}',
+			    disqus_url        = '{{ site.url }}{{ page.url | uri_escape }}'
+			;
+			(function() {
+				var load = function(src){
+					var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = src;
+					var e = document.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s, e);
+				};
+				load('//' + disqus_shortname + '.disqus.com/count.js');
+				if (document.getElementById('disqus_thread')) {
+					load('//' + disqus_shortname + '.disqus.com/embed.js');
+				}
+			})();
+		{% endif %}
+		</script>
+	</body>
+</html>
