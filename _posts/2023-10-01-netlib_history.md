@@ -2,7 +2,7 @@
 layout: post
 title:  网络库的起源
 tags:  netlib 
-image: blog.png
+image: netlib.png
 ---
 
 本篇介绍一下netsend网络库的起源,这个网络库只是起源于本人觉得好玩,而且很简单的一个需求.
