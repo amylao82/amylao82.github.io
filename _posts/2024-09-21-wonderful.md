@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: 造物主的神奇 
@@ -6,7 +5,7 @@ tags:   电脑社会学
 image: sociology.png
 ---
 
-今天在中上,看到停了一排电脑自行车.
+今天在楼下,看到停了一排电动自行车.
 
 {{ more }}
 
